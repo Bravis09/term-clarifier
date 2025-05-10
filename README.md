@@ -1,37 +1,35 @@
-# Welcome to your Expo app 👋
+# 📘 Term Clarifier App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A single-screen React Native app built with Expo that helps users clarify any term by showing its definition and synonyms. Built for an internship task using [dictionaryapi.dev](https://dictionaryapi.dev/).
 
-## Get started
+---
 
-1. Install dependencies
+## 🚀 Features
 
-   ```bash
-   npm install
-   ```
+- 🔍 Input box to search any English word
+- 📖 Fetches definitions from an open dictionary API
+- 🏷️ Highlights synonyms in a distinct style
+- ⏳ Shows loading state while fetching
+- ⚠️ Friendly error messages for term not found or network errors
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 🛠️ Tech Stack
 
-In the output, you'll find options to open the app in a
+- React Native (Expo)
+- TypeScript
+- Dictionary API
+- Expo CLI
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 📦 Getting Started
 
-## Get a fresh project
-
-When you're ready, run:
-
+### 1. Clone the Repository
 ```bash
 git clone https://github.com/Bravis09/term-clarifier.git
 cd term-clarifier
+
 
 ### 2. Install Dependencies
 npm install
