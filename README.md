@@ -47,3 +47,7 @@ npx expo start
 - Store recent search history
 - Dark mode / theming support
 - Deploy as a PWA or native build
+
+## 📸 Preview
+
+![App Screenshot](./Preview.png)
