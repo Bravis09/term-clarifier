@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
-import { ActivityIndicator, Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import {
+    ActivityIndicator,
+    Button,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TextInput,
+    View,
+} from 'react-native';
 
 export default function HomeScreen() {
   const [term, setTerm] = useState('');
@@ -21,9 +29,33 @@ export default function HomeScreen() {
       if (!res.ok) throw new Error('Term not found');
 
       const data = await res.json();
-      const meaning = data[0]?.meanings[0]?.definitions[0];
-      setDefinition(meaning?.definition || 'No definition found');
-      setSynonyms(meaning?.synonyms || []);
+
+      let foundDefinition = '';
+      const allSynonyms: string[] = [];
+
+      data.forEach((entry: any) => {
+        entry.meanings?.forEach((meaning: any) => {
+          meaning.definitions?.forEach((def: any) => {
+            if (!foundDefinition && def.definition) {
+              foundDefinition = def.definition;
+            }
+            if (Array.isArray(def.synonyms)) {
+              allSynonyms.push(...def.synonyms);
+            }
+          });
+
+          if (Array.isArray(meaning.synonyms)) {
+            allSynonyms.push(...meaning.synonyms);
+          }
+        });
+
+        if (Array.isArray(entry.synonyms)) {
+          allSynonyms.push(...entry.synonyms);
+        }
+      });
+
+      setDefinition(foundDefinition || 'No definition found');
+      setSynonyms([...new Set(allSynonyms)]);
     } catch (err: any) {
       setError(err.message.includes('Term') ? 'Term not found' : 'Network error');
     } finally {
@@ -32,7 +64,7 @@ export default function HomeScreen() {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Term Clarifier</Text>
       <TextInput
         style={styles.input}
@@ -43,11 +75,11 @@ export default function HomeScreen() {
       <Button title="Search" onPress={handleSearch} />
 
       {loading && <ActivityIndicator style={styles.loader} size="large" color="#0000ff" />}
-      
+
       {error ? (
         <Text style={styles.error}>{error}</Text>
       ) : (
-        definition ? (
+        definition && (
           <View style={styles.card}>
             <Text style={styles.label}>Definition:</Text>
             <Text style={styles.definition}>{definition}</Text>
@@ -57,24 +89,26 @@ export default function HomeScreen() {
                 <Text style={styles.label}>Synonyms:</Text>
                 <View style={styles.synonyms}>
                   {synonyms.map((syn, index) => (
-                    <Text key={index} style={styles.synonym}>{syn}</Text>
+                    <Text key={index} style={styles.synonym}>
+                      {syn}
+                    </Text>
                   ))}
                 </View>
               </>
             )}
           </View>
-        ) : null
+        )
       )}
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     padding: 24,
     paddingTop: 50,
     backgroundColor: '#fff',
+    flexGrow: 1,
   },
   title: {
     fontSize: 22,
