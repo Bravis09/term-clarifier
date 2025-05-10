@@ -1,44 +1,16 @@
-# 📘 Term Clarifier App
+# Welcome to your Expo app 👋
 
-A single-screen React Native app built with Expo that helps users clarify any term by showing its definition and synonyms. Built for an internship task using [dictionaryapi.dev](https://dictionaryapi.dev/).
+This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
----
+## Get started
 
-## 🚀 Features
-
-- 🔍 Input box to search any English word
-- 📖 Fetches definitions from an open dictionary API
-- 🏷️ Highlights synonyms in a distinct style
-- ⏳ Shows loading state while fetching
-- ⚠️ Friendly error messages for term not found or network errors
-
----
-
-## 🛠️ Tech Stack
-
-- React Native (Expo)
-- TypeScript
-- Dictionary API
-- Expo CLI
-
----
-
-## 📦 Getting Started
-
-### 1. Clone the Repository
-```bash
-git clone https://github.com/Bravis09/term-clarifier.git
-cd term-clarifier
-
-
-
-2. Install dependencies
+1. Install dependencies
 
    ```bash
    npm install
    ```
 
-3. Start the app
+2. Start the app
 
    ```bash
    npx expo start
@@ -58,21 +30,22 @@ You can start developing by editing the files inside the **app** directory. This
 When you're ready, run:
 
 ```bash
-npm run reset-project
-```
+git clone https://github.com/Bravis09/term-clarifier.git
+cd term-clarifier
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 2. Install Dependencies
+npm install
 
-## Learn more
+### 3. Run the App
+npx expo start
 
-To learn more about developing your project with Expo, look at the following resources:
+## ⏱ Time Taken
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+~5–6 hours (including setup, coding, testing, and polish)
 
-## Join the community
+## 🔧 If I Had More Time
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- Add voice input & text-to-speech
+- Store recent search history
+- Dark mode / theming support
+- Deploy as a PWA or native build
